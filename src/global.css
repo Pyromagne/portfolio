@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* *{
+  outline: 1px solid rgb(255, 255, 255);
+} */
+
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.quicksand {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.victor-mono {
+  font-family: "Victor Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  @apply quicksand;
+  @apply pattern;
+  color: white;
+  background-color: black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.pattern {
+  background-image:  radial-gradient(#7c7c7c 1px, transparent 1px), radial-gradient(#424242 1px, #000000 1px);
+  background-size: 80px 80px;
+  background-position: 0 0,40px 40px;
+}
