@@ -9,7 +9,6 @@ const Home = () => {
         <div className="montserrat w-fit">
           <p className="text-[128px] font-thin ml-20 w-fit">Pyromagne</p>
           <p className="text-2xl ml-24 w-fit">OREWANINGENJANAI</p>
-          <p className="ml-24">{moto}</p>
         </div>
       </div>
       <main className="m-24 mt-16">

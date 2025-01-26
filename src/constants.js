@@ -34,11 +34,11 @@ export const languages = [
         color: '#3776AB',
         name: 'Python',
     },
-    {
+    /* {
         icon: 'markdown',
         color: 'white',
         name: 'Markdown',
-    },
+    }, */
 ]
 
 export const technologies = [

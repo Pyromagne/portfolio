@@ -29,15 +29,31 @@
 
 body {
   @apply quicksand;
-  @apply pattern;
   color: white;
   background-color: black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply select-none;
 }
 
 .pattern {
-  background-image:  radial-gradient(#7c7c7c 1px, transparent 1px), radial-gradient(#424242 1px, #000000 1px);
+  background-image:  radial-gradient(#2a2a2a 1px, transparent 1px), radial-gradient(#313131 1px, #000000 1px);
   background-size: 80px 80px;
   background-position: 0 0,40px 40px;
+}
+
+#particles {
+  z-index: -10;
+  position: absolute;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#particles2 {
+  z-index: -10;
+  position: absolute;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
 }

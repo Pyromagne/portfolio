@@ -1,2 +1,2 @@
 export const moto = `Algorithms, where randomness is elusive, determinism and chaos invite diverse possibilities.`;
-export const aboutme = `Hi! I’m a developer with a diverse skill set. While I don’t specialize in one specific area yet, I'm working towards becoming a well-rounded developer.`;
+export const aboutme = `Hi! I’m Pyre and I am a developer. While I don’t specialize in one specific area yet, I'm working towards becoming a well-rounded developer.`;
