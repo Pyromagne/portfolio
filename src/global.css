@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* *{
-  outline: 1px solid rgb(255, 255, 255);
+  outline: 1px solid green;
 } */
 
 .montserrat {
@@ -45,7 +45,7 @@ body {
 #particles {
   z-index: -10;
   position: absolute;
-  background-image: url("");
+  /* background-image: url(""); */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -53,7 +53,7 @@ body {
 #particles2 {
   z-index: -10;
   position: absolute;
-  background-image: url("");
+  /* background-image: url(""); */
   background-repeat: no-repeat;
   background-size: cover;
 }

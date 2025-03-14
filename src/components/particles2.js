@@ -74,7 +74,7 @@ const ParticlesComponent2 = (props) => {
           speed: { min: 0.5, max: 1 }
         },
         number: {
-          value: 150
+          value: 500
         },
         opacity: {
           animation: {

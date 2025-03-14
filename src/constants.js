@@ -114,8 +114,8 @@ export const navlinks = [
       link: '/projects'
     },
     {
-      name:'Links',
-      link: '/links'
+      name:'Tools',
+      link: '/tools'
     },
     {
       name:'About',
