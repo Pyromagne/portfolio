@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.11f32459.css",
-    "main.js": "/portfolio/static/js/main.404ab91f.js",
+    "main.css": "/portfolio/static/css/main.568c4d23.css",
+    "main.js": "/portfolio/static/js/main.62f149dd.js",
     "static/media/Tattoo.svg": "/portfolio/static/media/Tattoo.e70d95166606448f239cfd508b025387.svg",
     "index.html": "/portfolio/index.html",
-    "main.11f32459.css.map": "/portfolio/static/css/main.11f32459.css.map",
-    "main.404ab91f.js.map": "/portfolio/static/js/main.404ab91f.js.map"
+    "main.568c4d23.css.map": "/portfolio/static/css/main.568c4d23.css.map",
+    "main.62f149dd.js.map": "/portfolio/static/js/main.62f149dd.js.map"
   },
   "entrypoints": [
-    "static/css/main.11f32459.css",
-    "static/js/main.404ab91f.js"
+    "static/css/main.568c4d23.css",
+    "static/js/main.62f149dd.js"
   ]
 }
