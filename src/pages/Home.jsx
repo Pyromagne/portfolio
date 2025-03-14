@@ -15,7 +15,7 @@ const Home = () => {
       <section className="m-8 mt-16 flex flex-col">
         <p className="text-lg w-1/2 victor-mono h-20">
           <Typewriter words={[aboutme, moto]} loop={false} delaySpeed={5000}
-            deleteSpeed={1} typeSpeed={20} cursor={true}
+            deleteSpeed={20} typeSpeed={30} cursor={true}
             cursorBlinking={true} cursorStyle='_' cursorColor="white"
           />
         </p>
