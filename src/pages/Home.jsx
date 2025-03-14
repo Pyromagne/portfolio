@@ -1,11 +1,11 @@
-import { moto, aboutme } from "../string";
-import { languages, technologies } from "../constants";
+import { moto, aboutme } from "../constants/strings";
+import { languages, technologies } from "../constants/techstacks";
 import IconFont from "../components/IconFont";
 import { Typewriter } from "react-simple-typewriter";
 
 const Home = () => {
   return (
-    <main className="">
+    <main>
       <div className="flex">
         <div className="montserrat w-fit">
           <p className="text-[128px] font-thin ml-4 w-fit">Pyromagne</p>
