@@ -14,6 +14,9 @@ const App = () => {
           <Route path="/projects" element={<Projects />} />
 
           <Route path="*" element={<Navigate to="/home" replace />} />
+
+          {/* Redirect from root to /home when not inside a Layout */}
+          <Route path="/" element={<Navigate to="/home" replace />} />
         </Route>
       </Routes>
     </>

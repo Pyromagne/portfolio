@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* *{
   outline: 1px solid green;
@@ -28,7 +26,6 @@
 }
 
 body {
-  @apply quicksand;
   color: white;
   background-color: black;
   -webkit-font-smoothing: antialiased;

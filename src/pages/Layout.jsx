@@ -3,14 +3,12 @@ import { SiInstagram } from "react-icons/si";
 import { SiGithub } from "react-icons/si";
 import { SiLinkedin } from "react-icons/si";
 import { navlinks } from "../constants/navlinks";
-import ParticlesComponent from "../components/particles";
 import ParticlesComponent2 from "../components/particles2";
 
 
 const Layout = () => {
   return (
     <div className="relative w-full pt-4 h-dvh flex flex-col">
-      {/* <ParticlesComponent id="particles2" /> */}
       <ParticlesComponent2 id="particles" />
       <div className="h-fit w-fit flex ml-auto mr-4 text-xl">
         {navlinks.map((link, index)=>{
