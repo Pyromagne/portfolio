@@ -12,7 +12,7 @@ const Layout = () => {
     <div className="relative w-full pt-4 h-dvh flex flex-col">
       {/* <ParticlesComponent id="particles2" /> */}
       <ParticlesComponent2 id="particles" />
-      <div className="h-fit w-fit flex ml-auto mr-4 text-xl flex-row-reverse">
+      <div className="h-fit w-fit flex ml-auto mr-4 text-xl">
         {navlinks.map((link, index)=>{
           return (
             <NavLink to={link.link} key={index}
@@ -24,8 +24,12 @@ const Layout = () => {
         })}
       </div>
       
-      <div className="flex-1 overflow-y-auto mr-4 mb-4 ml-16 border-2 border-white bg-black/10 backdrop-blur-sm">
+      <div className="relative flex-1 overflow-y-auto mr-4 mb-4 ml-16 border-2 border-white bg-black/10 backdrop-blur-sm">
         <Outlet />
+        <div className="absolute bottom-0 w-full flex p-2">
+          <span className="mr-2 font-bold">{`>_`}</span>
+          <input type="text" className="w-full bg-transparent border-none focus:outline-none victor-mono"/>
+        </div>
       </div>
 
       <div className="fixed ml-6 bottom-0 left-0 flex flex-col mb-4 ">
