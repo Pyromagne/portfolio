@@ -8,8 +8,8 @@ const Home = () => {
     <main>
       <div className="flex">
         <div className="montserrat w-fit">
-          <p className="text-[128px] font-thin ml-4 w-fit">Pyromagne</p>
-          <p className="text-2xl ml-8 w-fit tracking-widest">OREWANINGENJANAI</p>
+          <p className="text-[112px] font-thin ml-4 w-fit">Pyromagne</p>
+          <p className="text-2xl ml-8 w-fit tracking-widest">Ricardo C. Aron III - BSIT</p>
         </div>
       </div>
       <section className="m-8 mt-16 flex flex-col">
