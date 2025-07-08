@@ -11,7 +11,7 @@ const Layout = () => {
         {navlinks.map((link, index)=>{
           return (
             <NavLink to={link.link} key={index}
-              className={({ isActive }) => (isActive ? ' !text-[#100D08] font-bold ' : null) + 
+              className={({ isActive }) => (isActive ? ' text-[#100D08]! font-bold ' : null) + 
               ' victor-mono p-2 inline-block text-center text-[#464869]'}>
               {link.name}
             </NavLink>
