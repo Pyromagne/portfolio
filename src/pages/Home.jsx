@@ -1,43 +1,23 @@
-import { moto, aboutme } from "../constants/strings";
-import { languages, technologies } from "../constants/techstacks";
-import IconFont from "../components/IconFont";
-import { Typewriter } from "react-simple-typewriter";
-
+import { moto } from "../constants/strings";
 const Home = () => {
+
   return (
     <main>
-      <div className="flex">
-        <div className="montserrat w-fit">
-          <p className="text-[112px] font-thin ml-4 w-fit">Pyromagne</p>
-          <p className="text-2xl ml-8 w-fit tracking-widest">Ricardo C. Aron III - BSIT</p>
+      <div className="relative mt-36">
+        <div className="wave-container absolute top-10 left-0 w-full z-0">
+          <div className="wave"></div>
+          <div className="wave flipped-wave"></div>
+        </div>
+        <div className="montserrat w-full relative z-10">
+          <p className="text-7xl font-thin text-center">RICARDO ARON III</p>
+          <p className="text-2xl font-light text-center">Full Stack Developer</p>
+          <p className="text-center mt-10 text-blue-bell-600">{moto}</p>
         </div>
       </div>
-      <section className="m-8 mt-16 flex flex-col">
-        <p className="text-lg w-2/3 victor-mono h-20">
-          <Typewriter words={[aboutme, moto]} loop={false} delaySpeed={5000}
-            deleteSpeed={20} typeSpeed={30} cursor={false}
-            cursorBlinking={true} cursorStyle='_' cursorColor="white"
-          />
-        </p>
-        <p className="font-semibold text-2xl mb-4 mt-8 montserrat self-end">Languages</p>
-        <div className="flex gap-4 justify-end">
-          {languages.map((icon, index) => {
-            return (
-              <IconFont name={icon.icon} color2={icon.color} tooltip={icon.name} size={'32px'} key={index} />
-            )
-          })}
-          <IconFont name='csharp' tooltip='C#' color2="#69207A" className="devicon-csharp-plain text-[32px] leading-normal"></IconFont>
-          <IconFont name='java' tooltip='Java' color2="#EB2C2E" className="devicon-java-plain text-[32px] leading-normal"></IconFont>
-        </div>
-        <p className="font-semibold text-2xl mb-4 mt-8 montserrat self-end">Technologies</p>
-        <div className="flex gap-4 justify-end">
-          {technologies.map((icon, index) => {
-            return (
-              <IconFont name={icon.icon} color2={icon.color} tooltip={icon.name} size={'32px'} key={index} />
-            )
-          })}
-        </div>
-      </section>
+
+      <div>
+        
+      </div>
     </main>
   );
 }

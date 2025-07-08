@@ -29,17 +29,36 @@ const Projects = () => {
       </aside>
       <main className="w-full overflow-y-auto">
         {!project &&
-          <div className="grid grid-cols-3">
-            {projects.map((prj, index) => {
-              return (
-                <div key={index} className=" 
-                  p-2 border m-4 bg-black hover:custom-shadow duration-200 hover:cursor-pointer
-                   hover:bg-white hover:text-black"
-                >
-                  {prj.name}
-                </div>
-              )
-            })}
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Languages</th>
+                  <th scope="col">Techstacks</th>
+                  <th scope="col">Year</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {projects.map((prj, index) => {
+                  return (
+                    <tr key={index} className=" 
+                      p-2 bg-black hover:custom-shadow duration-200 hover:cursor-pointer
+                      hover:bg-white hover:text-black"
+                    >
+                      <td>{prj.name}</td>
+                      <td>{prj.type}</td>
+                      <td>{prj.tags.languages}</td>
+                      <td>{prj.tags.techstacks}</td>
+                      <td>{prj.year}</td>
+                      <td>{prj.status}</td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
           </div>
         }
 

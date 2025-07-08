@@ -25,38 +25,71 @@
   font-style: normal;
 }
 
+html {
+  color: #100D08;
+  background: linear-gradient(145deg, #f6f6f8 0%, #959bcc 92%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 body {
-  color: white;
-  background-color: black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   @apply select-none;
-}
-
-.pattern {
-  background-image: radial-gradient(#2a2a2a 1px, transparent 1px), radial-gradient(#313131 1px, #000000 1px);
-  background-size: 80px 80px;
-  background-position: 0 0, 40px 40px;
-}
-
-#particles {
-  z-index: -10;
-  position: absolute;
-  /* background-image: url(""); */
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#particles2 {
-  z-index: -10;
-  position: absolute;
-  /* background-image: url(""); */
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .hover\:custom-shadow:hover {
   -webkit-box-shadow: 0px 0px 14px 4px rgba(255, 255, 255, 0.3);
   -moz-box-shadow: 0px 0px 14px 4px rgba(255, 255, 255, 0.3);
   box-shadow: 0px 0px 14px 4px rgba(255, 255, 255, 0.3);
+}
+
+.gradient-light {
+  background: #F6F6F8;
+  background: linear-gradient(145deg, #f6f6f8 0%, #959bcc 92%);
+}
+
+.gradient-dark {
+  background: #100D08;
+  background: linear-gradient(145deg,#100d08 0%, #1c0936 92%);
+}
+
+.pattern {
+  opacity: 1;
+  background-image:  linear-gradient(#5e29a8 1.1px, transparent 1.1px), linear-gradient(to right, #5e29a8 1.1px, transparent 1.1px);
+  background-size: 32px 32px;
+}
+
+
+.wave-container {
+  position: relative;
+  width: 100%;
+  height: 128px;
+}
+.wave {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.wave {
+  background-image: 
+  url("assets/wave.svg"), 
+  url("assets/wave.svg");
+  background-repeat: repeat-x;
+  background-size: 1600px 96px;
+  background-position: 0 130%, -50px 130%;
+  opacity: 0.4;
+  
+  animation: 20s waves linear infinite forwards;
+}
+
+@keyframes waves {
+  to {
+    background-position: 1600px 130%, 3150px 130%;
+  }
+}
+
+.flipped-wave {
+  transform: scaleY(-1);
 }
