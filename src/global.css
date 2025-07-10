@@ -4,6 +4,21 @@
   outline: 1px solid green;
 } */
 
+@theme {
+   /* blue bell */
+   --color-blue-bell-50: oklch(97.20% 0.0062 255.47);
+   --color-blue-bell-100: oklch(94.57% 0.0128 266.70);
+   --color-blue-bell-200: oklch(90.01% 0.0232 266.90);
+   --color-blue-bell-300: oklch(83.37% 0.0394 269.40);
+   --color-blue-bell-400: oklch(75.22% 0.0597 276.24);
+   --color-blue-bell-500: oklch(70.25% 0.0720 278.94);
+   --color-blue-bell-600: oklch(59.14% 0.0987 281.59);
+   --color-blue-bell-700: oklch(52.37% 0.0966 282.55);
+   --color-blue-bell-800: oklch(45.92% 0.0776 281.98);
+   --color-blue-bell-900: oklch(41.42% 0.0550 281.03);
+   --color-blue-bell-950: oklch(29.28% 0.0345 281.70);
+}
+
 .montserrat {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
@@ -26,16 +41,17 @@
 }
 
 html {
-  color: #100D08;
-  background: linear-gradient(145deg, #f6f6f8 0%, #959bcc 92%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  
 }
 
 body {
+  background: #F6F6F8;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   @apply select-none;
+  @apply min-h-screen;
 }
 
 .hover\:custom-shadow:hover {
@@ -46,11 +62,13 @@ body {
 
 .gradient-light {
   background: #F6F6F8;
+  color: #100D08;
   background: linear-gradient(145deg, #f6f6f8 0%, #959bcc 92%);
 }
 
 .gradient-dark {
   background: #100D08;
+  color: #F6F6F8;
   background: linear-gradient(145deg,#100d08 0%, #1c0936 92%);
 }
 
