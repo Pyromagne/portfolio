@@ -4,45 +4,63 @@
   outline: 1px solid green;
 } */
 
+@theme inline {
+  --color-background: var(--background);
+  --color-text: var(--text);
+}
+
+/* Define actual values */
+@layer base {
+  :root {
+    --background: oklch(97.371% 0.00276 285.752);
+    --text: oklch(16.094% 0.01146 80.973);
+    --gradient-background: linear-gradient(145deg, #f6f6f8 0%, #959bcc 92%);
+    --wave-bottom: rgb(116, 118, 183, .35);
+    --recent-project-bg: rgb(164, 172, 213, .40);
+  }
+
+  .dark {
+    --background: oklch(16.094% 0.01146 80.973);
+    --text: oklch(97.371% 0.00276 285.752);
+    --gradient-background: linear-gradient(145deg, #292a3d 0%, #100d08 92%);
+    --wave-bottom: rgb(93, 95, 157, .38);
+    --recent-project-bg: rgb(164, 172, 213, .10);
+  }
+}
+
 @theme {
-   /* blue bell */
-   --color-blue-bell-50: oklch(97.20% 0.0062 255.47);
-   --color-blue-bell-100: oklch(94.57% 0.0128 266.70);
-   --color-blue-bell-200: oklch(90.01% 0.0232 266.90);
-   --color-blue-bell-300: oklch(83.37% 0.0394 269.40);
-   --color-blue-bell-400: oklch(75.22% 0.0597 276.24);
-   --color-blue-bell-500: oklch(70.25% 0.0720 278.94);
-   --color-blue-bell-600: oklch(59.14% 0.0987 281.59);
-   --color-blue-bell-700: oklch(52.37% 0.0966 282.55);
-   --color-blue-bell-800: oklch(45.92% 0.0776 281.98);
-   --color-blue-bell-900: oklch(41.42% 0.0550 281.03);
-   --color-blue-bell-950: oklch(29.28% 0.0345 281.70);
+  --color-blue-bell-50: oklch(97.20% 0.0062 255.47);
+  --color-blue-bell-100: oklch(94.57% 0.0128 266.70);
+  --color-blue-bell-200: oklch(90.01% 0.0232 266.90);
+  --color-blue-bell-300: oklch(83.37% 0.0394 269.40);
+  --color-blue-bell-400: oklch(75.22% 0.0597 276.24);
+  --color-blue-bell-500: oklch(70.25% 0.0720 278.94);
+  --color-blue-bell-600: oklch(59.14% 0.0987 281.59);
+  --color-blue-bell-700: oklch(52.37% 0.0966 282.55);
+  --color-blue-bell-800: oklch(45.92% 0.0776 281.98);
+  --color-blue-bell-900: oklch(41.42% 0.0550 281.03);
+  --color-blue-bell-950: oklch(29.28% 0.0345 281.70);
 }
 
 .montserrat {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
   font-style: normal;
 }
 
 .quicksand {
   font-family: "Quicksand", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
   font-style: normal;
 }
 
 .victor-mono {
   font-family: "Victor Mono", monospace;
   font-optical-sizing: auto;
-  font-weight: 400;
   font-style: normal;
 }
 
-html {
-  
-}
+html {}
 
 body {
   background: #F6F6F8;
@@ -60,54 +78,58 @@ body {
   box-shadow: 0px 0px 14px 4px rgba(255, 255, 255, 0.3);
 }
 
-.gradient-light {
-  background: #F6F6F8;
-  color: #100D08;
-  background: linear-gradient(145deg, #f6f6f8 0%, #959bcc 92%);
+.gradient {
+  background: var(--gradient-background);
 }
 
-.gradient-dark {
-  background: #100D08;
-  color: #F6F6F8;
-  background: linear-gradient(145deg,#100d08 0%, #1c0936 92%);
+.gradient\/50 {
+  position: relative;
+  z-index: 0;
+}
+
+.gradient\/50::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-background);
+  opacity: 0.5;
+  /* 50% opacity */
+  z-index: -1;
+  pointer-events: none;
 }
 
 .pattern {
-  opacity: 1;
-  background-image:  linear-gradient(#5e29a8 1.1px, transparent 1.1px), linear-gradient(to right, #5e29a8 1.1px, transparent 1.1px);
-  background-size: 32px 32px;
+  background-image: radial-gradient(#444cf7 1px, transparent 1px), radial-gradient(#444cf7 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
 }
 
-
-.wave-container {
-  position: relative;
-  width: 100%;
-  height: 128px;
-}
-.wave {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.grain {
+  background-image: url("./assets/images/grain.png");
+  background-repeat: repeat;
 }
 
-.wave {
-  background-image: 
-  url("assets/wave.svg"), 
-  url("assets/wave.svg");
-  background-repeat: repeat-x;
-  background-size: 1600px 96px;
-  background-position: 0 130%, -50px 130%;
-  opacity: 0.4;
-  
-  animation: 20s waves linear infinite forwards;
+.text-vertical-lr {
+  text-orientation: mixed;
+  writing-mode: vertical-lr;
 }
 
-@keyframes waves {
-  to {
-    background-position: 1600px 130%, 3150px 130%;
-  }
+.text-sideways-lr {
+  text-orientation: mixed;
+  writing-mode: sideways-lr;
 }
 
-.flipped-wave {
-  transform: scaleY(-1);
+.text-upright {
+  text-orientation: upright;
+  writing-mode: vertical-rl;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.wave-bottom {
+  background-color: var(--wave-bottom);
+}
+
+.recent-project-bg {
+  background-color: var(--recent-project-bg);
 }
