@@ -7,6 +7,7 @@ import { phrase, intro, skills } from "../constants/strings";
 import { languages, technologies } from "../constants/techstacks";
 import { projects } from "../constants/projects";
 import FlashlightWrapper from "../components/FlashlightWrapper";
+import ProjectCard from "../components/ProjectCard";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import IconFont from "../components/IconFont";
 
@@ -32,10 +33,6 @@ const Home = () => {
     fetchPalettes();
   }, []);
 
-  useEffect(() => {
-    console.log(paletteProjects);
-  }, [paletteProjects])
-
   return (
     <main>
       <FlashlightWrapper pattern="pattern" opacity={0.8}>
@@ -51,8 +48,8 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="quicksand grid grid-cols-2 mb-10 mt-20 py-10 px-30">
-          <p className="text-justify text-xl font-medium">{intro}</p>
+        <div className="grid grid-cols-2 mb-10 mt-20 py-10 px-30">
+          <p className="text-justify text-xl">{intro}</p>
 
           <div className="flex flex-col justify-center items-end">
             <div className="flex gap-5">
@@ -80,14 +77,14 @@ const Home = () => {
 
             <div className="flex flex-col gap-4 w-full">
               <div className="rounded-2xl shadow-xl p-2 gradient/50 overflow-hidden h-1/2 z-10">
-                <p className="text-2xl montserrat text-center mb-4 font-medium">TECHSTACKS</p>
+                <p className="text-2xl montserrat text-center mb-4 font-medium">Techstacks</p>
                 <div className="flex gap-4 w-full flex-wrap p-4">
                   {technologies.map((tech, index) => <IconFont name={tech.icon} key={index} tooltip={tech.name} className="text-4xl hover:scale-105 duration-200 cursor-pointer" />)}
                 </div>
               </div>
 
               <div className="rounded-2xl shadow-xl p-2 gradient/50 overflow-hidden h-1/2 z-10">
-                <p className="text-2xl montserrat text-center mb-4 font-medium">LANGUAGES</p>
+                <p className="text-2xl montserrat text-center mb-4 font-medium">Languages</p>
                 <div className="flex gap-4 w-full flex-wrap p-4">
                   {languages.map((lang, index) => <IconFont name={lang.icon} key={index} tooltip={lang.name} className="text-4xl hover:scale-105 duration-200 cursor-pointer" />)}
                 </div>
@@ -109,7 +106,7 @@ const Home = () => {
           </div>
         </div>
 
-        <h2 className="text-center font-medium text-3xl montserrat mt-20">Recent Projects</h2>
+        <h2 className="text-center font-light text-3xl montserrat mt-20">Recent Projects</h2>
         <div className="relative px-20 mx-10">
           <div
             ref={scrollRef}
@@ -124,42 +121,7 @@ const Home = () => {
                   key={index}
                   className="snap-center shrink-0 w-1/3 p-4"
                 >
-                  <FlashlightWrapper pattern="grain" opacity={0.6} className="overflow-hidden h-full w-full rounded-xl border border-blue-bell-800 shadow hover:shadow-lg duration-300 cursor-crosshair">
-                    <div className="overflow-hidden flex flex-col p-4 h-full -z-10 recent-project-bg">
-                      <p className="text-sideways-lr p-2 absolute right-0 bottom-0 font-bold text-6xl truncate z-10 opacity-10">{project.name}</p>
-                      <img
-                        src={project.urls.image}
-                        alt={project.name}
-                        className="rounded-xl shadow duration-200 h-64 object-cover z-20"
-                      />
-                      <div className="mt-6">
-                        <a href={project.urls.website} target="_blank" rel="noopener noreferrer">
-                          <p className="font-bold montserrat truncate hover:text-blue-bell-900">{project.name}</p>
-                        </a>
-                        <p className="victor-mono text-sm">{project.type?.join(", ")}</p>
-                      </div>
-                      <p className="my-8 text-justify">{project.description}</p>
-                      <div className="flex gap-2 mt-auto">
-                        {project.tags.techstacks.map((t, index) => <IconFont key={index} name={t} size={20} tooltip={t} className="text-blue-bell-600 text-2xl" />)}
-                      </div>
-                      <div className="mt-2">
-                        {project.tags.languages?.map((lang, index) => (
-                          <span
-                            key={index}
-                            style={{
-                              color: languages.find((L) => L.icon === lang)?.color,
-                            }}
-                            className="border-2 victor-mono text-sm px-1 rounded font-semibold mr-2"
-                          >
-                            {languages.find((L) => L.icon === lang)?.name}
-                          </span>
-                        ))}
-                        <p className="victor-mono text-sm">
-                          {/* {project.tags.techstacks?.join(", ")} */}
-                        </p>
-                      </div>
-                    </div>
-                  </FlashlightWrapper>
+                  <ProjectCard project={project} />
                 </div>
               );
             })}
@@ -183,16 +145,9 @@ const Home = () => {
 
 
       <div>
-        <h1 className="text-3xl montserrat text-center mt-20 font-medium">SKILLS</h1>
+        <h1 className="text-3xl montserrat text-center mt-20 font-light">Skills</h1>
         <div className="grid grid-cols-4 px-20 mt-10">
           {skills.map((skill, index) => <p key={index} className="truncate p-2 m-1 text-blue-bell-900 hover:text-text duration-200 hover:cursor-pointer" title={skill.description}>{skill.name}</p>)}
-        </div>
-      </div>
-
-      <div className="">
-        <div className="wave w-full top-0 h-44" />
-        <div className="p-10 wave-bottom">
-          <p className='text-center'>&copy;  {year} Ricardo Aron III, All Rights Reserved.</p>
         </div>
       </div>
     </main>

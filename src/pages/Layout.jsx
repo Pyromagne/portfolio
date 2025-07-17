@@ -5,11 +5,7 @@ import { useState, useEffect } from "react";
 
 const Layout = () => {
   const [darkMode, setDarkMode] = useState(false);
-
-  /* useEffect(() => {
-    const body = document.body;
-    body.classList.add("gradient");
-  }, [darkMode]); */
+  const year = new Date().getFullYear();
 
   return (
     <div className={`flex flex-col text-text gradient ${darkMode ? 'dark' : ''}`}>
@@ -33,6 +29,13 @@ const Layout = () => {
 
       <div>
         <Outlet />
+      </div>
+
+      <div>
+        <div className="wave w-full top-0 h-44" />
+        <div className="p-10 wave-bottom">
+          <p className='text-center'>&copy;  {year} Ricardo Aron III, All Rights Reserved.</p>
+        </div>
       </div>
     </div>
   );

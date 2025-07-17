@@ -1,72 +1,22 @@
 import { useState, useEffect } from "react";
 import { projects } from "../constants/projects";
-
+import ProjectCard from "../components/ProjectCard";
+import FlashlightWrapper from "../components/FlashlightWrapper";
 
 const Projects = () => {
-  const [project, setProject] = useState();
 
   return (
-    <div className="flex flex-row h-full">
-      <aside className="w-[15%] h-full border-r-2 overflow-y-auto bg-black">
-        <button onClick={() => setProject()}
-          className={`w-full text-start  text-sm px-4 p-1 whitespace-nowrap
-            ${!project ? 'bg-white text-black font-medium' : 'bg-black text-white'}  
-          `}
-        >All Projects</button>
-        {
-          projects.map((prj, index) => {
-            return (
-              <button key={index} onClick={() => setProject(prj)}
-                className={`w-full text-start  text-sm px-4 p-1 whitespace-nowrap truncate
-                  ${prj.name === project?.name ? 'bg-white text-black font-medium' : 'bg-black text-white'}  
-                `}
-              >
-                {prj.name}
-              </button>
-            )
-          })
-        }
-      </aside>
-      <main className="w-full overflow-y-auto">
-        {!project &&
-          <div>
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Type</th>
-                  <th scope="col">Languages</th>
-                  <th scope="col">Techstacks</th>
-                  <th scope="col">Year</th>
-                  <th scope="col">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {projects.map((prj, index) => {
-                  return (
-                    <tr key={index} className=" 
-                      p-2 bg-black hover:custom-shadow duration-200 hover:cursor-pointer
-                      hover:bg-white hover:text-black"
-                    >
-                      <td>{prj.name}</td>
-                      <td>{prj.type}</td>
-                      <td>{prj.tags.languages}</td>
-                      <td>{prj.tags.techstacks}</td>
-                      <td>{prj.year}</td>
-                      <td>{prj.status}</td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
-          </div>
-        }
-
-        <div>
-          <img src={project?.urls.image} alt={project?.name} />
+    <main>
+      <FlashlightWrapper pattern="pattern" opacity={0.8}>
+        <h1 className="text-4xl font-light text-center montserrat pt-20">Projects</h1>
+        <p className="text-center text-blue-bell-800 quicksand font-medium mb-8 mt-2">{`Here is a collection of the projects I’ve developed.`}</p>
+        <div className="flex flex-wrap px-20">
+          {
+            projects.map((project, index) => <div className="w-1/3 p-2 shrink-0"><ProjectCard project={project} key={index} /></div>)
+          }
         </div>
-      </main>
-    </div>
+      </FlashlightWrapper>
+    </main>
   )
 }
 export default Projects;
