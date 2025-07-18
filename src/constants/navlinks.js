@@ -8,15 +8,15 @@ export const navlinks = [
       link: '/projects'
     },
     {
-      name:'Tools',
-      link: '/tools'
+      name:'Contact',
+      link: '/contact'
     },
     {
       name:'About',
       link: '/about'
     },
     {
-      name:'Contact',
-      link: '/contact'
+      name:'Tools',
+      link: '/tools'
     },
   ]

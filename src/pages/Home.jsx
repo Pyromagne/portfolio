@@ -72,36 +72,38 @@ const Home = () => {
         </div>
         <div className="flex quicksand">
 
-          <div className="w-2/3 p-10 flex gap-10">
-            <p className="text-upright font-extrabold montserrat text-3xl tracking-tighter">TECHNOLOGIES</p>
+          <div className="w-2/3 pl-30 pr-10 flex gap-10">
+            {/* <p className="text-upright font-extrabold montserrat text-3xl tracking-tighter">TECHNOLOGIES</p> */}
 
             <div className="flex flex-col gap-4 w-full">
-              <div className="rounded-2xl shadow-xl p-2 gradient/50 overflow-hidden h-1/2 z-10">
-                <p className="text-2xl montserrat text-center mb-4 font-medium">Techstacks</p>
-                <div className="flex gap-4 w-full flex-wrap p-4">
+              <div className="overflow-hidden h-1/2 z-10">
+                <div className="flex gap-4 w-full flex-wrap">
                   {technologies.map((tech, index) => <IconFont name={tech.icon} key={index} tooltip={tech.name} className="text-4xl hover:scale-105 duration-200 cursor-pointer" />)}
                 </div>
+                <p className="text-xl montserrat font-medium">Techstacks</p>
               </div>
 
-              <div className="rounded-2xl shadow-xl p-2 gradient/50 overflow-hidden h-1/2 z-10">
-                <p className="text-2xl montserrat text-center mb-4 font-medium">Languages</p>
-                <div className="flex gap-4 w-full flex-wrap p-4">
+              <div className="overflow-hidden h-1/2 z-10">
+                <div className="flex gap-4 w-full flex-wrap">
                   {languages.map((lang, index) => <IconFont name={lang.icon} key={index} tooltip={lang.name} className="text-4xl hover:scale-105 duration-200 cursor-pointer" />)}
+                  <i class="devicon-csharp-plain text-4xl hover:scale-105 duration-200 cursor-pointer" />
+                  <i class="devicon-java-plain text-4xl hover:scale-105 duration-200 cursor-pointer" />
                 </div>
+                <p className="text-xl montserrat font-medium">Languages</p>
               </div>
             </div>
           </div>
 
-          <div className="w-1/3 flex gap-8 p-10">
+          <div className="w-1/3 flex gap-8 pl-10 pr-30 justify-end">
             <div className="w-40 relative group h-fit">
               <div className="opacity-0 group-hover:opacity-100 duration-500" />
-              <p className="text-6xl font-bold montserrat">+5</p>
-              <p className="victor-mono text-xl">years of experience</p>
+              <p className="text-6xl font-bold montserrat text-right">+{year - 2021}</p>
+              <p className="victor-mono text-xl text-right">years of experience</p>
             </div>
             <div className="w-40 relative group h-fit">
               <div className="opacity-0 group-hover:opacity-100 duration-500" />
-              <p className="text-6xl font-bold montserrat">+10</p>
-              <p className="victor-mono text-xl">projects completed</p>
+              <p className="text-6xl font-bold montserrat text-right">+{projects.length}</p>
+              <p className="victor-mono text-xl text-right">projects completed</p>
             </div>
           </div>
         </div>

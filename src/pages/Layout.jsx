@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { navlinks } from "../constants/navlinks";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Layout = () => {
   const [darkMode, setDarkMode] = useState(false);

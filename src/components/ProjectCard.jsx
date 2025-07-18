@@ -14,13 +14,13 @@ const ProjectCard = ({project}) => {
         <p className="text-sideways-lr p-2 absolute right-0 bottom-0 font-bold text-6xl truncate z-10 opacity-10">{project.name}</p>
 
         <div className="p-4">
-          <div className="mt-2">
+          <div>
             <a href={project.urls.website} target="_blank" rel="noopener noreferrer">
-              <p className="font-bold montserrat truncate hover:text-blue-bell-900">{project.name}</p>
+              <p className="font-bold text-lg montserrat truncate hover:text-blue-bell-900">{project.name}</p>
             </a>
-            <p className="victor-mono text-sm">{project.type?.join(", ")}</p>
+            <p className="text-sm">{project.type?.join(", ")}</p>
           </div>
-          <p className="my-8 text-justify">{project.description}</p>
+          <p className="my-8 victor-mono text-sm text-pretty">{project.description}</p>
         </div>
 
         <div className="flex gap-2 mt-auto px-4">
