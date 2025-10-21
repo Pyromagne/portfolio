@@ -13,12 +13,12 @@ import ProjectCard from "../components/ProjectCard";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { IconCapsule } from "../components/IconFont";
 import resume from "../assets/documents/ricardo_aron_iii_resume.pdf"
-import useWakaTimeStats from "../hooks/useWakatimeStats";
+/* import useWakaTimeStats from "../hooks/useWakatimeStats"; */
 
 const Home = () => {
   const year = new Date().getFullYear();
   const [paletteProjects, setPaletteProjects] = useState([]);
-  const { stats, loading, error } = useWakaTimeStats();
+  /* const { stats, loading, error } = useWakaTimeStats(); */
 
   const [resumeBtnText, setResumeBtnText] = useState('Resume');
   const [emailBtnText, setEmailBtnText] = useState('Email');
@@ -150,7 +150,7 @@ const Home = () => {
                       <i className={`${lang.icon} text-2xl mr-4`} style={{ color: lang.color }} />
                       <p className="font-medium text-blue-bell-800 ">{lang.name}</p>
                     </div>
-                    <p className="text-blue-bell-800 text">{stats?.languages.find((l) => l.name === lang.name)?.text}</p>
+                    {/* <p className="text-blue-bell-800 text">{stats?.languages.find((l) => l.name === lang.name)?.text}</p> */}
                   </div>
                 )
               })}
