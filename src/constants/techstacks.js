@@ -1,43 +1,58 @@
 export const languages = [
-    {
-        icon: 'c',
+    /* {
+        icon: 'si si-c',
         color: '#A8B9CC',
         name: 'C',
-    },
+    }, */
     {
-        icon: 'cplusplus',
+        icon: 'si si-cplusplus',
         color: '#00599C',
         name: 'C++',
     },
     {
-        icon: 'javascript',
+        icon: 'si si-javascript',
         color: '#F7DF1E',
         name: 'JavaScript',
     },
     {
-        icon: 'php',
+        icon: 'si si-php',
         color: '#777BB4',
         name: 'PHP',
     },
     {
-        icon: 'html5',
+        icon: 'si si-html5',
         color: '#E34F26',
-        name: 'HTML5',
+        name: 'HTML',
     },
     {
-        icon: 'css3',
+        icon: 'si si-css3',
         color: '#1572B6',
-        name: 'CSS3',
+        name: 'CSS',
     },
     {
-        icon: 'python',
+        icon: 'si si-python',
         color: '#3776AB',
         name: 'Python',
     },
+    {
+        icon: 'si si-typescript',
+        color: '#3178C6',
+        name: 'TypeScript',
+    },
     /* {
-        icon: 'markdown',
+        icon: 'si si-markdown',
         color: 'white',
         name: 'Markdown',
+    }, */
+    /* {
+        icon: 'devicon-java-plain',
+        color: '#EA2D2E',
+        name: 'Java',
+    }, */
+    /* {
+        icon: 'devicon-csharp-plain',
+        color: '#68217A',
+        name: 'C#',
     }, */
 ]
 
@@ -51,6 +66,11 @@ export const technologies = [
         icon: 'express',
         color: 'white',
         name: 'Express',
+    },
+    {
+        icon: 'git',
+        color: '#F05032',
+        name: 'Git',
     },
     {
         icon: 'inertia',
@@ -101,5 +121,25 @@ export const technologies = [
         icon: 'mysql',
         color: '#4479A1',
         name: 'MySQL',
+    },
+    {
+        icon: 'postgresql',
+        color: '#4169E1',
+        name: 'PostgreSQL',
+    },
+    {
+        icon: 'cheerio',
+        color: '#E88C1F',
+        name: 'Cheerio',
+    },
+    {
+        icon: 'puppeteer',
+        color: '#40B5A4',
+        name: 'Puppeteer',
+    },
+    {
+        icon: 'gsap',
+        color: '#0AE448',
+        name: 'GSAP',
     },
 ]

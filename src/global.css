@@ -9,16 +9,15 @@
   --color-text: var(--text);
 }
 
-/* Define actual values */
-@layer base {
-  :root {
+@theme {
     --background: oklch(97.371% 0.00276 285.752);
     --text: oklch(16.094% 0.01146 80.973);
     --gradient-background: linear-gradient(145deg, #f6f6f8 0%, #959bcc 92%);
     --wave-bottom: rgb(116, 118, 183, .35);
     --recent-project-bg: rgb(164, 172, 213, .40);
-  }
+}
 
+@layer base {
   .dark {
     --background: oklch(16.094% 0.01146 80.973);
     --text: oklch(97.371% 0.00276 285.752);
@@ -60,7 +59,10 @@
   font-style: normal;
 }
 
-html {}
+html {
+  scroll-behavior: smooth;
+}
+
 
 body {
   background: #F6F6F8;
@@ -132,4 +134,10 @@ body {
 
 .recent-project-bg {
   background-color: var(--recent-project-bg);
+}
+
+.darkveil-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
 }

@@ -1,18 +1,34 @@
-import whatsnewfeed from "../assets/images/projects/whatsnewfeed.png";
+import whatsnewfeed from "../assets/images/projects/whatsnewfeed-mockup.jpg";
 import reveriejournal from "../assets/images/projects/reverie-journal.png";
+import projectminesweeper from "../assets/images/projects/project-minesweeper.png"
 
 export const projects = [
+    {
+        name: 'PROJECT [mine]sweeper',
+        type: ['Web Application', 'Game'],
+        year: 2025,
+        urls: {
+            repository: 'https://github.com/Pyromagne/project-minesweeper',
+            website: 'https://project-minesweeper.vercel.app/',
+            image: projectminesweeper,
+        },
+        tags: {
+            languages: ['TypeScript'],
+            techstacks: ['react', 'tailwindcss','vite']
+        },
+        description: "A simple minesweeper game created using ReactJS and Tailwind CSS",
+    },
     {
         name: 'whatsnewfeed',
         type: ['Web Application'],
         year: 2024,
         urls: {
             repository: 'https://github.com/Pyromagne/whatsnewfeed',
-            website: 'https://whatsnewfeed.onrender.com/',
+            website: 'https://whatsnewfeed.vercel.app/',
             image: whatsnewfeed,
         },
         tags: {
-            languages: ['javascript'],
+            languages: ['JavaScript'],
             techstacks: ['spotify api', 'react', 'express']
         },
         description: "View your latest releases from artists you followed in spotify with a larger cap.",
@@ -26,21 +42,21 @@ export const projects = [
             website: 'https://reverie-journal.onrender.com//',
             image: reveriejournal,
         }, tags: {
-            languages: ['javascript'],
+            languages: ['JavaScript'],
             techstacks: ['react', 'mongodb']
         },
         description: "A web-based dream tracker application",
     },
     {
         name: 'NexFleet Dynamics - BTMS: Logistic I',
-        type: ['Website', 'System'],
+        type: ['Website', 'Enterprise System'],
         year: 2024,
         urls: {
             repository: 'https://github.com/Pyromagne/Logistic-I',
             website: 'https://lgstc1.nexfleetdynamics.com/',
             image: '',
         }, tags: {
-            languages: ['php', 'javascript'],
+            languages: ['PHP', 'JavaScript'],
             techstacks: ['react', 'laravel']
         },
         description: "A logistics module for NexFleet Dynamics - Bus Transportation Management System",
@@ -54,7 +70,7 @@ export const projects = [
             website: '',
             image: '',
         }, tags: {
-            languages: ['javascript'],
+            languages: ['JavaScript'],
             techstacks: ['discord js']
         },
         description: "Unofficial discord wiki bot for god eater game series",
@@ -68,21 +84,21 @@ export const projects = [
             website: 'https://pen-spinning-library.onrender.com/',
             image: '',
         }, tags: {
-            languages: ['javascript'],
+            languages: ['JavaScript'],
             techstacks: ['react']
         },
         description: "An open source react application for penspinner that compiles tricks and guides around the globe.",
     },
     {
         name: 'Hospital Human Resource Management System',
-        type: ['Website', 'System'],
+        type: ['Website', 'Enterprise System'],
         year: 2023,
         urls: {
             repository: 'https://github.com/edillormark2/HospitalHumanResourceManagementSystem',
             website: '',
             image: 'https://raw.githubusercontent.com/edillormark2/HospitalHumanResourceManagementSystem/refs/heads/master/.resources/screenshot1.png',
         }, tags: {
-            languages: ['javascript'],
+            languages: ['JavaScript'],
             techstacks: ['react', 'mongodb', 'express', 'mui']
         },
         description: "Web-based Human Resource Management System tailored for hospitals",
@@ -96,7 +112,7 @@ export const projects = [
             website: '',
             image: '',
         }, tags: {
-            languages: ['cplusplus'],
+            languages: ['C++'],
             techstacks: ['sfml']
         },
         description: "C++ library built using the SFML Graphics Library, It is designed to help developers create interactive and customizable button elements",
@@ -110,7 +126,7 @@ export const projects = [
             website: '',
             image: '',
         }, tags: {
-            languages: ['cplusplus'],
+            languages: ['C++'],
             techstacks: []
         },
         description: "C++ library that allows you to print text with colors and backgrounds on a terminal based application",

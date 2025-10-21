@@ -1,19 +1,52 @@
 import { useEffect, useState, useRef } from "react";
 import { getProjectPalettes } from "../constants/projects";
+import { useScramble } from "use-scramble";
 
 import { SiFacebook, SiInstagram, SiLinkedin, SiGithub } from "react-icons/si";
+import Spotlight from "../components/Spotlight";
+import CountUp from "../components/CountUp";
 
 import { phrase, intro, skills } from "../constants/strings";
 import { languages, technologies } from "../constants/techstacks";
 import { projects } from "../constants/projects";
-import FlashlightWrapper from "../components/FlashlightWrapper";
 import ProjectCard from "../components/ProjectCard";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
-import IconFont from "../components/IconFont";
+import { IconCapsule } from "../components/IconFont";
+import resume from "../assets/documents/ricardo_aron_iii_resume.pdf"
+import useWakaTimeStats from "../hooks/useWakatimeStats";
 
 const Home = () => {
   const year = new Date().getFullYear();
   const [paletteProjects, setPaletteProjects] = useState([]);
+  const { stats, loading, error } = useWakaTimeStats();
+
+  const [resumeBtnText, setResumeBtnText] = useState('Resume');
+  const [emailBtnText, setEmailBtnText] = useState('Email');
+
+  const [name, setName] = useState('RICARDO ARON III');
+  const { ref: nameRef } = useScramble({
+    text: name,
+    range: [65, 90],
+    speed: .50,
+    tick: 5,
+    step: 8,
+    scramble: 5,
+    seed: 2,
+    chance: 1,
+    overdrive: false,
+    overflow: true,
+  });
+  const { ref: phraseRef, replay } = useScramble({
+    text: phrase,
+    speed: 0.50,
+    tick: 1,
+    step: 8,
+    scramble: 5,
+    seed: 2,
+    chance: 1,
+    overdrive: false,
+    overflow: true,
+  });
 
   const scrollRef = useRef(null);
   const scrollLeft = () => {
@@ -34,21 +67,37 @@ const Home = () => {
   }, []);
 
   return (
-    <main>
-      <FlashlightWrapper pattern="pattern" opacity={0.8}>
-        <div className="relative pt-72">
-          <div className="absolute top-40 left-0 w-full h-44 z-0">
-            <div className="wave w-full h-44" />
-            <div className="wave flipped-wave h-44 w-full" />
-          </div>
-          <div className="montserrat w-full relative z-10">
-            <p className="text-7xl font-thin text-center">RICARDO ARON III</p>
-            <p className="text-2xl font-light text-center mt-2">Full-Stack Developer</p>
-            <p className="text-center mt-10 text-blue-bell-800 quicksand font-medium">{phrase}</p>
-          </div>
+    <main className="px-30">
+
+      {/* SECTION 1 */}
+      <section id="section-1" className="min-h-svh py-10 montserrat relative flex flex-col items-center">
+        <p className="font-thin text-7xl text-center mt-40" ref={nameRef} onMouseEnter={() => setName('PYROMAGNE')} onMouseLeave={() => setName('RICARDO ARON III')}>RICARDO ARON III</p>
+        <p className="font-light text-2xl text-center">Full-Stack Developer</p>
+
+        <p className="victor-mono font-medium text-sm text-center text-blue-bell-800 mt-10" ref={phraseRef} onMouseEnter={replay}>{phrase}</p>
+
+        <div className="flex justify-center mt-10 gap-4 border w-fit rounded-full py-2 px-4 items-center">
+          <a className="rounded victor-mono uppercase" href={resume} target="_blank" rel="noopener noreferrer"
+            onMouseEnter={() => setResumeBtnText('View Resume')}
+            onMouseLeave={() => setResumeBtnText('Resume')}
+          >
+            {resumeBtnText}
+          </a>
+          <span>|</span>
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText("aroniii.ricardo@gmail.com");
+              alert("Email copied to clipboard!");
+            }}
+            className="rounded victor-mono uppercase cursor-pointer"
+            onMouseEnter={() => setEmailBtnText('Copy Email')}
+            onMouseLeave={() => setEmailBtnText('Email')}
+          >
+            {emailBtnText}
+          </button>
         </div>
 
-        <div className="grid grid-cols-2 mb-10 mt-20 py-10 px-30">
+        <div className="grid grid-cols-2 mt-40">
           <p className="text-justify text-xl">{intro}</p>
 
           <div className="flex flex-col justify-center items-end">
@@ -61,99 +110,118 @@ const Home = () => {
             <p className="mt-4 font-medium">Connect with me</p>
           </div>
         </div>
-      </FlashlightWrapper>
+      </section>
 
-      <div className="blob-container">
-        <div className="blobs">
-          <div className="blob a"></div>
-          <div className="blob b"></div>
-          <div className="blob c"></div>
-          <div className="blob d"></div>
+      {/* SECTION 2 */}
+      <section id="section-2" className="min-h-svh py-10 gap-6 flex flex-col quicksand">
+        <div className="w-full flex gap-6 text-right montserrat">
+          <Spotlight className="relative w-full h-fit px-10 pt-16 pb-6 rounded-2xl border border-blue-bell-500" spotlightColor="#7476b7">
+            <p className="relative text-7xl font-bold">
+              <CountUp from={0} to={year - 2021} separator="," direction="up" duration={.2} />
+            </p>
+            <p className="relative text-xl font-medium">Years of Experience</p>
+            <p className="relative victor-mono text-sm text-blue-bell-800">Always learning and improving</p>
+          </Spotlight>
+
+          <Spotlight className="relative w-full h-fit px-10 pt-16 pb-6 rounded-2xl border border-blue-bell-500" spotlightColor="#7476b7">
+            <p className="relative text-7xl font-bold">
+              <CountUp from={0} to={projects.length} separator="," direction="up" duration={.2} />+
+            </p>
+            <p className="relative text-xl font-medium">Projects Completed</p>
+            <p className="relative victor-mono text-sm text-blue-bell-800">Delivering quality and consistency</p>
+          </Spotlight>
         </div>
-        <div className="flex quicksand">
 
-          <div className="w-2/3 pl-30 pr-10 flex gap-10">
-            {/* <p className="text-upright font-extrabold montserrat text-3xl tracking-tighter">TECHNOLOGIES</p> */}
+        <div className="flex flex-col gap-4 w-full mt-10">
 
-            <div className="flex flex-col gap-4 w-full">
-              <div className="overflow-hidden h-1/2 z-10">
-                <div className="flex gap-4 w-full flex-wrap">
-                  {technologies.map((tech, index) => <IconFont name={tech.icon} key={index} tooltip={tech.name} className="text-4xl hover:scale-105 duration-200 cursor-pointer" />)}
-                </div>
-                <p className="text-xl montserrat font-medium">Techstacks</p>
+          <div className="mb-8">
+            <p className="montserrat text-blue-bell-800 mb-4 text-center">{`These are some of the technologies I’ve worked with over the past few years.`}</p>
+            <div className="flex gap-2 w-full flex-wrap justify-center pb-2">
+              {technologies.map((tech, index) => <IconCapsule icon={tech.icon} name={tech.name} key={index} color={tech.color} />)}
+            </div>
+          </div>
+
+          <div className="mt-10">
+            <div className="flex gap-8 w-full flex-wrap justify-around">
+              {languages.map((lang, index) => {
+                return (
+                  <div key={index} className="rounded-xl p-2 hover:outline outline-blue-bell-800 hover:shadow duration-300">
+                    <div className="flex justify-between items-center">
+                      <i className={`${lang.icon} text-2xl mr-4`} style={{ color: lang.color }} />
+                      <p className="font-medium text-blue-bell-800 ">{lang.name}</p>
+                    </div>
+                    <p className="text-blue-bell-800 text">{stats?.languages.find((l) => l.name === lang.name)?.text}</p>
+                  </div>
+                )
+              })}
+            </div>
+            <p className="montserrat text-blue-bell-800 text-center mt-2">{`Languages I frequently use in my projects.`}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3 */}
+      <section id="section-3" className="min-h-svh py-10 relative">
+        <h2 className="text-center font-light text-3xl montserrat">Featured Projects</h2>
+        <div
+          ref={scrollRef}
+          className=" overflow-x-auto flex snap-x snap-mandatory w-full scroll-smooth overflow hide-scroll"
+        >
+          {projects.map((project, index) => {
+            const projectPalette = paletteProjects.find((p) => p.name === project.name);
+            const color = projectPalette?.palette?.Vibrant || "#ffffff";
+
+            return (
+              <div
+                key={index}
+                className="snap-center shrink-0 w-1/3 p-4"
+              >
+                <ProjectCard project={project} />
               </div>
-
-              <div className="overflow-hidden h-1/2 z-10">
-                <div className="flex gap-4 w-full flex-wrap">
-                  {languages.map((lang, index) => <IconFont name={lang.icon} key={index} tooltip={lang.name} className="text-4xl hover:scale-105 duration-200 cursor-pointer" />)}
-                  <i class="devicon-csharp-plain text-4xl hover:scale-105 duration-200 cursor-pointer" />
-                  <i class="devicon-java-plain text-4xl hover:scale-105 duration-200 cursor-pointer" />
-                </div>
-                <p className="text-xl montserrat font-medium">Languages</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="w-1/3 flex gap-8 pl-10 pr-30 justify-end">
-            <div className="w-40 relative group h-fit">
-              <div className="opacity-0 group-hover:opacity-100 duration-500" />
-              <p className="text-6xl font-bold montserrat text-right">+{year - 2021}</p>
-              <p className="victor-mono text-xl text-right">years of experience</p>
-            </div>
-            <div className="w-40 relative group h-fit">
-              <div className="opacity-0 group-hover:opacity-100 duration-500" />
-              <p className="text-6xl font-bold montserrat text-right">+{projects.length}</p>
-              <p className="victor-mono text-xl text-right">projects completed</p>
-            </div>
-          </div>
+            );
+          })}
         </div>
 
-        <h2 className="text-center font-light text-3xl montserrat mt-20">Recent Projects</h2>
-        <div className="relative px-20 mx-10">
-          <div
-            ref={scrollRef}
-            className=" overflow-x-auto flex snap-x snap-mandatory w-full scroll-smooth overflow hide-scroll"
-          >
-            {projects.map((project, index) => {
-              const projectPalette = paletteProjects.find((p) => p.name === project.name);
-              const color = projectPalette?.palette?.Vibrant || "#ffffff";
-
-              return (
-                <div
-                  key={index}
-                  className="snap-center shrink-0 w-1/3 p-4"
-                >
-                  <ProjectCard project={project} />
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Navigation buttons */}
-          <button
-            onClick={scrollLeft}
-            className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full shadow-lg z-10 border cursor-pointer"
-          >
-            <BiChevronLeft size={24} />
-          </button>
-          <button
-            onClick={scrollRight}
-            className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full shadow-lg z-10 border cursor-pointer"
-          >
-            <BiChevronRight size={24} />
-          </button>
+        <div className="flex justify-center relative z-10">
+          <a href="https://github.com/Pyromagne?tab=repositories" target="_blank" rel="noopener noreferrer" className="text-lg font-m montserrat w-fit text-blue-bell-800">
+            View all Projects
+          </a>
         </div>
-      </div>
 
+        {/* Navigation buttons */}
+        <button
+          onClick={scrollLeft}
+          className="absolute -left-10 top-1/2 -translate-y-1/2 p-2 rounded-full shadow-lg z-10 border cursor-pointer"
+        >
+          <BiChevronLeft size={24} />
+        </button>
+        <button
+          onClick={scrollRight}
+          className="absolute -right-10 top-1/2 -translate-y-1/2 p-2 rounded-full shadow-lg z-10 border cursor-pointer"
+        >
+          <BiChevronRight size={24} />
+        </button>
+      </section>
 
-      <div>
-        <h1 className="text-3xl montserrat text-center mt-20 font-light">Skills</h1>
-        <div className="grid grid-cols-4 px-20 mt-10">
+      {/* SECTION 4 */}
+      <section id="section-4" className="min-h-svh py-10">
+        <h1 className="text-3xl montserrat text-center font-light">Skills</h1>
+
+        <div className="grid grid-cols-4 mt-10">
           {skills.map((skill, index) => <p key={index} className="truncate p-2 m-1 text-blue-bell-900 hover:text-text duration-200 hover:cursor-pointer" title={skill.description}>{skill.name}</p>)}
         </div>
-      </div>
+      </section>
     </main>
   );
 }
 
 export default Home;
+
+function hexToRGB(hex) {
+  const bigint = parseInt(hex.replace('#', ''), 16);
+  return [
+    ((bigint >> 16) & 255) / 255,
+    ((bigint >> 8) & 255) / 255,
+    (bigint & 255) / 255,
+  ];
+}

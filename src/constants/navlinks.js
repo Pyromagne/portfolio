@@ -1,22 +1,18 @@
 export const navlinks = [
     {
       name:'Home',
-      link: '/home'
+      link: '#section-1'
+    },
+    {
+      name:'Techstacks',
+      link: '#section-2'
     },
     {
       name:'Projects',
-      link: '/projects'
+      link: '#section-3'
     },
     {
-      name:'Contact',
-      link: '/contact'
-    },
-    {
-      name:'About',
-      link: '/about'
-    },
-    {
-      name:'Tools',
-      link: '/tools'
+      name:'Skills',
+      link: '#section-4'
     },
   ]

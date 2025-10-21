@@ -1,41 +1,45 @@
-import { Outlet } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import { navlinks } from "../constants/navlinks";
-import { useState } from "react";
+import { Outlet, NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { navlinks } from '../constants/navlinks'
 
 const Layout = () => {
   const [darkMode, setDarkMode] = useState(false);
   const year = new Date().getFullYear();
 
-  return (
-    <div className={`flex flex-col text-text gradient ${darkMode ? 'dark' : ''}`}>
-      <nav className="ml-auto">
-        {navlinks.map((link, index) => {
-          return (
-            <NavLink to={link.link} key={index}
-              className={({ isActive }) => (isActive ? 'font-bold text-text' : null) +
-                ' victor-mono p-2 inline-block text-center text-blue-bell-800'}>
-              {link.name}
-            </NavLink>
-          )
-        })}
-      </nav>
+  useEffect(() => {
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
 
-      <button className="absolute p-2 rounded-br-3xl victor-mono font-medium hover:cursor-pointer text-text"
+  return (
+    <div className='flex flex-col text-text gradient'>
+      <button className="fixed bottom-0 right-0 p-4 victor-mono font-medium hover:cursor-pointer text-text z-20"
         onClick={() => setDarkMode(!darkMode)}
       >
         {darkMode ? "PM" : "AM"}
       </button>
 
+      <nav className="fixed right-0 z-20 text-vertical-lr">
+        {navlinks.map((link, index) => {
+          return (
+            <a href={link.link} key={index}
+              className="victor-mono p-2 inline-block text-center text-blue-bell-800">
+              {link.name}
+            </a>
+          )
+        })}
+      </nav>
+
       <div>
         <Outlet />
       </div>
 
-      <div>
-        <div className="wave w-full top-0 h-44" />
-        <div className="p-10 wave-bottom">
-          <p className='text-center'>&copy;  {year} Ricardo Aron III, All Rights Reserved.</p>
-        </div>
+      <div className="w-full">
+        <p className='text-center relative mb-4'>&copy;  {year} Ricardo Aron III, All Rights Reserved.</p>
       </div>
     </div>
   );
