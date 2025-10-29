@@ -1,6 +1,9 @@
 import whatsnewfeed from "../assets/images/projects/whatsnewfeed-mockup.jpg";
 import reveriejournal from "../assets/images/projects/reverie-journal.png";
 import projectminesweeper from "../assets/images/projects/project-minesweeper.png"
+import nf_btms_lgstc_i from "../assets/images/projects/nexfleet-dynamics-btms-lgstc-I-2.png";
+import ge_bot from "../assets/images/projects/ge-bot-mockup.jpg";
+import psl from "../assets/images/projects/pen-spinning-library.png";
 
 export const projects = [
     {
@@ -54,7 +57,7 @@ export const projects = [
         urls: {
             repository: 'https://github.com/Pyromagne/Logistic-I',
             website: 'https://lgstc1.nexfleetdynamics.com/',
-            image: '',
+            image: nf_btms_lgstc_i,
         }, tags: {
             languages: ['PHP', 'JavaScript'],
             techstacks: ['react', 'laravel']
@@ -68,7 +71,7 @@ export const projects = [
         urls: {
             repository: 'https://github.com/Pyromagne/God-Eater-wiki-bot',
             website: '',
-            image: '',
+            image: ge_bot,
         }, tags: {
             languages: ['JavaScript'],
             techstacks: ['discord js']
@@ -82,7 +85,7 @@ export const projects = [
         urls: {
             repository: 'https://github.com/Pyromagne/Pen-Spinning-Library',
             website: 'https://pen-spinning-library.onrender.com/',
-            image: '',
+            image: psl,
         }, tags: {
             languages: ['JavaScript'],
             techstacks: ['react']
