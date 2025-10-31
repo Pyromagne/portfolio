@@ -1,9 +1,12 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import { getProjectPalettes } from "../constants/projects";
 import { useScramble } from "use-scramble";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/src/ScrollTrigger";
+import TextPlugin from "gsap/TextPlugin";
 
 import { SiFacebook, SiInstagram, SiLinkedin, SiGithub } from "react-icons/si";
-import Spotlight from "../components/Spotlight";
+import { emailBtnAnimation, expCardAnimation, languageAnimation, projCardAnimation, resumeBtnAnimation, socialPhraseAnimation, techstacksAnimation } from "../constants/animations";
 import CountUp from "../components/CountUp";
 
 import { phrase, intro, skills } from "../constants/strings";
@@ -15,13 +18,28 @@ import { IconCapsule } from "../components/IconFont";
 import resume from "../assets/documents/ricardo_aron_iii_resume.pdf"
 /* import useWakaTimeStats from "../hooks/useWakatimeStats"; */
 
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
 const Home = () => {
   const year = new Date().getFullYear();
   const [paletteProjects, setPaletteProjects] = useState([]);
   /* const { stats, loading, error } = useWakaTimeStats(); */
+  
+  const expCardRef = useRef(null);
+  const projCardRef = useRef(null);
 
-  const [resumeBtnText, setResumeBtnText] = useState('Resume');
-  const [emailBtnText, setEmailBtnText] = useState('Email');
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.techstacks-capsule', techstacksAnimation.from, techstacksAnimation.to);
+      gsap.fromTo('.language-capsule', languageAnimation.from, languageAnimation.to);
+      gsap.from(['.social', '#intro'], {opacity: 0, duration: 1, ease: 'power3.in'});
+      gsap.fromTo('#connect', socialPhraseAnimation.from, socialPhraseAnimation.to)
+      gsap.fromTo(expCardRef.current, expCardAnimation.from, expCardAnimation.to);
+      gsap.fromTo(projCardRef.current, projCardAnimation.from, projCardAnimation.to);
+    });
+    return () => ctx.revert();
+  }, []);
+
 
   const [name, setName] = useState('RICARDO ARON III');
   const { ref: nameRef } = useScramble({
@@ -67,7 +85,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="px-30">
+    <main className="px-30 overflow-hidden">
 
       {/* SECTION 1 */}
       <section id="section-1" className="min-h-svh py-10 montserrat relative flex flex-col items-center">
@@ -76,12 +94,12 @@ const Home = () => {
 
         <p className="victor-mono font-medium text-sm text-center text-blue-bell-800 mt-10" ref={phraseRef} onMouseEnter={replay}>{phrase}</p>
 
-        <div className="flex justify-center mt-10 gap-4 border w-fit rounded-full py-2 px-4 items-center">
-          <a className="rounded victor-mono uppercase" href={resume} target="_blank" rel="noopener noreferrer"
-            onMouseEnter={() => setResumeBtnText('View Resume')}
-            onMouseLeave={() => setResumeBtnText('Resume')}
+        <div id="resume-email-btns" className="flex justify-center mt-10 gap-4 border w-fit rounded-full py-2 px-4 items-center shadow">
+          <a className="resume rounded victor-mono uppercase" href={resume} target="_blank" rel="noopener noreferrer"
+            onMouseEnter={()=>gsap.to('.resume', resumeBtnAnimation.enter)}
+            onMouseLeave={()=>gsap.to('.resume', resumeBtnAnimation.leave)}
           >
-            {resumeBtnText}
+            resume
           </a>
           <span>|</span>
           <button
@@ -89,25 +107,25 @@ const Home = () => {
               navigator.clipboard.writeText("aroniii.ricardo@gmail.com");
               alert("Email copied to clipboard!");
             }}
-            className="rounded victor-mono uppercase cursor-pointer"
-            onMouseEnter={() => setEmailBtnText('Copy Email')}
-            onMouseLeave={() => setEmailBtnText('Email')}
+            className="email rounded victor-mono uppercase cursor-pointer"
+            onMouseEnter={()=>gsap.to('.email', emailBtnAnimation.enter)}
+            onMouseLeave={()=>gsap.to('.email', emailBtnAnimation.leave)}
           >
-            {emailBtnText}
+            email
           </button>
         </div>
 
-        <div className="grid grid-cols-2 mt-40">
-          <p className="text-justify text-xl">{intro}</p>
+        <div className="grid grid-cols-2 mt-30">
+          <p id="intro" className="text-justify text-lg">{intro}</p>
 
           <div className="flex flex-col justify-center items-end">
             <div className="flex gap-5">
-              <a href="https://www.facebook.com/Pyromagne31826" target="_blank" rel="noopener noreferrer"><SiFacebook size={32} className="hover:scale-140 duration-300" /></a>
-              <a href="https://www.instagram.com/pyromagne/" target="_blank" rel="noopener noreferrer"><SiInstagram size={32} className="hover:scale-140 duration-300" /></a>
-              <a href="https://www.linkedin.com/in/ricardo-aron-23420330a/" target="_blank" rel="noopener noreferrer"><SiLinkedin size={32} className="hover:scale-140 duration-300" /></a>
-              <a href="https://github.com/Pyromagne" target="_blank" rel="noopener noreferrer"><SiGithub size={32} className="hover:scale-140 duration-300" /></a>
+              <a className="social" href="https://www.facebook.com/Pyromagne31826" target="_blank" rel="noopener noreferrer"><SiFacebook size={32} /></a>
+              <a className="social" href="https://www.instagram.com/pyromagne/" target="_blank" rel="noopener noreferrer"><SiInstagram size={32} /></a>
+              <a className="social" href="https://www.linkedin.com/in/ricardo-aron-23420330a/" target="_blank" rel="noopener noreferrer"><SiLinkedin size={32} /></a>
+              <a className="social" href="https://github.com/Pyromagne" target="_blank" rel="noopener noreferrer"><SiGithub size={32} /></a>
             </div>
-            <p className="mt-4 font-medium">Connect with me</p>
+            <p id="connect" className="mt-4 text-lg font-medium">{`Let’s stay connected`}</p>
           </div>
         </div>
       </section>
@@ -115,21 +133,21 @@ const Home = () => {
       {/* SECTION 2 */}
       <section id="section-2" className="min-h-svh py-10 gap-6 flex flex-col quicksand">
         <div className="w-full flex gap-6 text-right montserrat">
-          <Spotlight className="relative w-full h-fit px-10 pt-16 pb-6 rounded-2xl border border-blue-bell-500" spotlightColor="#7476b7">
+          <div ref={expCardRef} className="sl-l relative w-full h-fit px-10 pt-16 pb-6 rounded-2xl border border-blue-bell-500 overflow-hidden">
             <p className="relative text-7xl font-bold">
               <CountUp from={0} to={year - 2021} separator="," direction="up" duration={.2} />
             </p>
             <p className="relative text-xl font-medium">Years of Experience</p>
             <p className="relative victor-mono text-sm text-blue-bell-800">Always learning and improving</p>
-          </Spotlight>
+          </div>
 
-          <Spotlight className="relative w-full h-fit px-10 pt-16 pb-6 rounded-2xl border border-blue-bell-500" spotlightColor="#7476b7">
+          <div ref={projCardRef} className="sl-r relative w-full h-fit px-10 pt-16 pb-6 rounded-2xl border border-blue-bell-500 overflow-hidden">
             <p className="relative text-7xl font-bold">
               <CountUp from={0} to={projects.length} separator="," direction="up" duration={.2} />+
             </p>
             <p className="relative text-xl font-medium">Projects Completed</p>
             <p className="relative victor-mono text-sm text-blue-bell-800">Delivering quality and consistency</p>
-          </Spotlight>
+          </div>
         </div>
 
         <div className="flex flex-col gap-4 w-full mt-10">
@@ -137,18 +155,18 @@ const Home = () => {
           <div className="mb-8">
             <p className="montserrat text-blue-bell-800 mb-4 text-center">{`These are some of the technologies I’ve worked with over the past few years.`}</p>
             <div className="flex gap-2 w-full flex-wrap justify-center pb-2">
-              {technologies.map((tech, index) => <IconCapsule icon={tech.icon} name={tech.name} key={index} color={tech.color} />)}
+              {technologies.map((tech, index) => <IconCapsule icon={tech.icon} name={tech.name} key={index} color={tech.color} className="techstacks-capsule opacity-0" />)}
             </div>
           </div>
 
           <div className="mt-10">
-            <div className="flex gap-8 w-full flex-wrap justify-around">
+            <div className="flex gap-3 w-full flex-wrap justify-center">
               {languages.map((lang, index) => {
                 return (
-                  <div key={index} className="rounded-xl p-2 hover:outline outline-blue-bell-800 hover:shadow duration-300">
+                  <div key={index} className="language-capsule rounded-full px-4 py-2 shadow" style={{backgroundColor: lang.color}}>
                     <div className="flex justify-between items-center">
-                      <i className={`${lang.icon} text-2xl mr-4`} style={{ color: lang.color }} />
-                      <p className="font-medium text-blue-bell-800 ">{lang.name}</p>
+                      <i className={`${lang.icon} text-xl mr-2 leading-0 text-background`} />
+                      <p className="font-medium text-background">{lang.name}</p>
                     </div>
                     {/* <p className="text-blue-bell-800 text">{stats?.languages.find((l) => l.name === lang.name)?.text}</p> */}
                   </div>

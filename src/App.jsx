@@ -9,12 +9,12 @@ const App = () => {
       <Routes>
         <Route element={<Layout />}>
 
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
 
-          <Route path="*" element={<Navigate to="/home" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
 
           {/* Redirect from root to /home when not inside a Layout */}
-          <Route path="/" element={<Navigate to="/home" replace />} />
+          <Route path="/" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </>

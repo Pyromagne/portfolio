@@ -141,3 +141,8 @@ body {
   height: 100%;
   display: block;
 }
+
+nav button.active {
+  font-weight: 800;
+  color: var(--text);
+}

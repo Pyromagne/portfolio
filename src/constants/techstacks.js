@@ -1,18 +1,13 @@
 export const languages = [
-    /* {
-        icon: 'si si-c',
-        color: '#A8B9CC',
-        name: 'C',
-    }, */
-    {
-        icon: 'si si-cplusplus',
-        color: '#00599C',
-        name: 'C++',
-    },
     {
         icon: 'si si-javascript',
         color: '#F7DF1E',
         name: 'JavaScript',
+    },
+    {
+        icon: 'si si-typescript',
+        color: '#3178C6',
+        name: 'TypeScript',
     },
     {
         icon: 'si si-php',
@@ -20,12 +15,17 @@ export const languages = [
         name: 'PHP',
     },
     {
+        icon: 'si si-cplusplus',
+        color: '#00599C',
+        name: 'C++',
+    },
+    {
         icon: 'si si-html5',
         color: '#E34F26',
         name: 'HTML',
     },
     {
-        icon: 'si si-css3',
+        icon: 'devicon-css3-plain',
         color: '#1572B6',
         name: 'CSS',
     },
@@ -35,25 +35,20 @@ export const languages = [
         name: 'Python',
     },
     {
-        icon: 'si si-typescript',
-        color: '#3178C6',
-        name: 'TypeScript',
-    },
-    /* {
-        icon: 'si si-markdown',
-        color: 'white',
-        name: 'Markdown',
-    }, */
-    /* {
         icon: 'devicon-java-plain',
         color: '#EA2D2E',
         name: 'Java',
-    }, */
-    /* {
+    },
+    {
         icon: 'devicon-csharp-plain',
         color: '#68217A',
         name: 'C#',
-    }, */
+    },
+    {
+        icon: 'si si-c',
+        color: '#A8B9CC',
+        name: 'C',
+    },
 ]
 
 export const technologies = [

@@ -1,6 +1,6 @@
 /* export const moto = `Algorithms, where randomness is elusive, determinism and chaos invite diverse possibilities.`; */
 export const phrase = `Algorithms don't need randomness to be unpredictable — within determinism and chaos lie endless paths to complexity.`;
-export const intro = `Hi, I'm Ricardo Aron III, a full-stack developer focused on delivering high-quality, end-to-end solutions.`;
+export const intro = `Hi, I'm Ricardo Aron III, currently focused on becoming an accomplished full-stack developer committed to deliver a high-quality and efficient web applications.`;
 
 export const skills = [
   { name: "Front-End Development", description: "Building user interfaces with HTML, CSS, and JavaScript." },

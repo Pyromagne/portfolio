@@ -25,17 +25,17 @@ const IconFont = ({ name = '', style = {}, tooltip = "", onClick = () => {}, cla
 
 export default IconFont;
 
-export const IconCapsule = ({ icon='', name = '', color='black', style = {}, onClick = () => {}, className='text-xl', type = "si" }) => {
+export const IconCapsule = ({ className= '', icon='', name = '', color='black', style = {}, onClick = () => {}, iClass='text-xl', type = "si" }) => {
   let iconClass;
 
   if (type === "si") {
-    iconClass = `si si-${icon} ` + className;
+    iconClass = `si si-${icon} ` + iClass;
   } else if (type === 'dev') {
-    iconClass = `devicon-${icon}-plain ` + className;
+    iconClass = `devicon-${icon}-plain ` + iClass;
   } else return;
   
   return (
-    <div className="flex gap-2 items-center border py-1 px-3 rounded-full w-fit text-blue-bell-800 shadow">
+    <div className={`${className} flex gap-2 items-center border py-1 px-3 rounded-full w-fit text-blue-bell-800 shadow`}>
       <i className={iconClass} style={{color: color}} />
       <span className="font-medium text-blue-bell-800">{name}</span>
     </div>
