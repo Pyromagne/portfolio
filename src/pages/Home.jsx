@@ -1,22 +1,22 @@
 import { useEffect, useState, useRef, useLayoutEffect } from "react";
-import { getProjectPalettes } from "../constants/projects";
 import { useScramble } from "use-scramble";
+import { SiFacebook, SiInstagram, SiLinkedin, SiGithub } from "react-icons/si";
+
 import gsap from "gsap";
 import ScrollTrigger from "gsap/src/ScrollTrigger";
 import TextPlugin from "gsap/TextPlugin";
 
-import { SiFacebook, SiInstagram, SiLinkedin, SiGithub } from "react-icons/si";
-import { emailBtnAnimation, expCardAnimation, languageAnimation, projCardAnimation, resumeBtnAnimation, socialPhraseAnimation, techstacksAnimation } from "../constants/animations";
+/* import useWakaTimeStats from "../hooks/useWakatimeStats"; */
 import CountUp from "../components/CountUp";
+import IconFont, { IconCapsule } from "../components/IconFont";
 
+import { getProjectPalettes } from "../constants/projects";
 import { phrase, intro, skills } from "../constants/strings";
 import { languages, technologies } from "../constants/techstacks";
 import { projects } from "../constants/projects";
-import ProjectCard from "../components/ProjectCard";
-import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
-import { IconCapsule } from "../components/IconFont";
+import { emailBtnAnimation, expCardAnimation, languageAnimation, projCardAnimation, ProjectAnimation, resumeBtnAnimation, socialPhraseAnimation, techstacksAnimation } from "../constants/animations";
+
 import resume from "../assets/documents/ricardo_aron_iii_resume.pdf"
-/* import useWakaTimeStats from "../hooks/useWakatimeStats"; */
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
@@ -24,7 +24,7 @@ const Home = () => {
   const year = new Date().getFullYear();
   const [paletteProjects, setPaletteProjects] = useState([]);
   /* const { stats, loading, error } = useWakaTimeStats(); */
-  
+
   const expCardRef = useRef(null);
   const projCardRef = useRef(null);
 
@@ -32,9 +32,11 @@ const Home = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.techstacks-capsule', techstacksAnimation.from, techstacksAnimation.to);
       gsap.fromTo('.language-capsule', languageAnimation.from, languageAnimation.to);
-      gsap.from(['.social', '#intro'], {opacity: 0, duration: 1, ease: 'power3.in'});
+      gsap.fromTo('.projects', ProjectAnimation.from, ProjectAnimation.to);
+      gsap.from(['.social', '#intro'], { opacity: 0, duration: 1, ease: 'power3.in' });
       gsap.fromTo('#connect', socialPhraseAnimation.from, socialPhraseAnimation.to)
       gsap.fromTo(expCardRef.current, expCardAnimation.from, expCardAnimation.to);
+      gsap.fromTo(projCardRef.current, projCardAnimation.from, projCardAnimation.to);
       gsap.fromTo(projCardRef.current, projCardAnimation.from, projCardAnimation.to);
     });
     return () => ctx.revert();
@@ -66,15 +68,6 @@ const Home = () => {
     overflow: true,
   });
 
-  const scrollRef = useRef(null);
-  const scrollLeft = () => {
-    scrollRef.current?.scrollBy({ left: -320, behavior: "smooth" });
-  };
-
-  const scrollRight = () => {
-    scrollRef.current?.scrollBy({ left: 320, behavior: "smooth" });
-  };
-
   useEffect(() => {
     const fetchPalettes = async () => {
       const data = await getProjectPalettes();
@@ -96,8 +89,8 @@ const Home = () => {
 
         <div id="resume-email-btns" className="flex justify-center mt-10 gap-4 border w-fit rounded-full py-2 px-4 items-center shadow">
           <a className="resume rounded victor-mono uppercase" href={resume} target="_blank" rel="noopener noreferrer"
-            onMouseEnter={()=>gsap.to('.resume', resumeBtnAnimation.enter)}
-            onMouseLeave={()=>gsap.to('.resume', resumeBtnAnimation.leave)}
+            onMouseEnter={() => gsap.to('.resume', resumeBtnAnimation.enter)}
+            onMouseLeave={() => gsap.to('.resume', resumeBtnAnimation.leave)}
           >
             resume
           </a>
@@ -108,8 +101,8 @@ const Home = () => {
               alert("Email copied to clipboard!");
             }}
             className="email rounded victor-mono uppercase cursor-pointer"
-            onMouseEnter={()=>gsap.to('.email', emailBtnAnimation.enter)}
-            onMouseLeave={()=>gsap.to('.email', emailBtnAnimation.leave)}
+            onMouseEnter={() => gsap.to('.email', emailBtnAnimation.enter)}
+            onMouseLeave={() => gsap.to('.email', emailBtnAnimation.leave)}
           >
             email
           </button>
@@ -120,10 +113,18 @@ const Home = () => {
 
           <div className="flex flex-col justify-center items-end">
             <div className="flex gap-5">
-              <a className="social" href="https://www.facebook.com/Pyromagne31826" target="_blank" rel="noopener noreferrer"><SiFacebook size={32} /></a>
-              <a className="social" href="https://www.instagram.com/pyromagne/" target="_blank" rel="noopener noreferrer"><SiInstagram size={32} /></a>
-              <a className="social" href="https://www.linkedin.com/in/ricardo-aron-23420330a/" target="_blank" rel="noopener noreferrer"><SiLinkedin size={32} /></a>
-              <a className="social" href="https://github.com/Pyromagne" target="_blank" rel="noopener noreferrer"><SiGithub size={32} /></a>
+              <a className="social" href="https://www.facebook.com/Pyromagne31826" target="_blank" rel="noopener noreferrer">
+                <SiFacebook size={32} className="hover:text-[#0866FF] duration-200" />
+              </a>
+              <a className="social" href="https://www.instagram.com/pyromagne/" target="_blank" rel="noopener noreferrer">
+                <SiInstagram size={32} className="hover:text-[#FF0069] duration-200" />
+              </a>
+              <a className="social" href="https://www.linkedin.com/in/ricardo-aron-23420330a/" target="_blank" rel="noopener noreferrer">
+                <SiLinkedin size={32} className="hover:text-[#0077B3] duration-200" />
+              </a>
+              <a className="social" href="https://github.com/Pyromagne" target="_blank" rel="noopener noreferrer">
+                <SiGithub size={32} className="hover:text-[#181717] duration-200" />
+              </a>
             </div>
             <p id="connect" className="mt-4 text-lg font-medium">{`Let’s stay connected`}</p>
           </div>
@@ -163,7 +164,7 @@ const Home = () => {
             <div className="flex gap-3 w-full flex-wrap justify-center">
               {languages.map((lang, index) => {
                 return (
-                  <div key={index} className="language-capsule rounded-full px-4 py-2 shadow" style={{backgroundColor: lang.color}}>
+                  <div key={index} className="language-capsule rounded-full px-4 py-2 shadow" style={{ backgroundColor: lang.color }}>
                     <div className="flex justify-between items-center">
                       <i className={`${lang.icon} text-xl mr-2 leading-0 text-background`} />
                       <p className="font-medium text-background">{lang.name}</p>
@@ -180,53 +181,105 @@ const Home = () => {
 
       {/* SECTION 3 */}
       <section id="section-3" className="min-h-svh py-10 relative">
-        <h2 className="text-center font-light text-3xl montserrat">Featured Projects</h2>
-        <div
-          ref={scrollRef}
-          className=" overflow-x-auto flex snap-x snap-mandatory w-full scroll-smooth overflow hide-scroll"
-        >
-          {projects.map((project, index) => {
+        <h2 className="text-center font-light text-4xl montserrat mb-10 text-shadow-sm">My Recent Projects</h2>
+
+        <div className="grid grid-cols-2 gap-4">
+          {projects.slice(0, 8).map((project, index) => {
             const projectPalette = paletteProjects.find((p) => p.name === project.name);
-            const color = projectPalette?.palette?.Vibrant || "#ffffff";
+            const color1 = projectPalette?.palette?.LightVibrant || "#ffffff";
+            const color2 = projectPalette?.palette?.DarkMuted || "#000000";
 
             return (
-              <div
-                key={index}
-                className="snap-center shrink-0 w-1/3 p-4"
+              <div key={index}
+                onMouseEnter={() => {
+                  gsap.to(`#project-image-${index}`, { left: 25, ease: 'power2.inOut' });
+                  gsap.to(`#project-desc-${index}`, { opacity: 0, ease: 'power2.inOut' });
+                }}
+                onMouseLeave={() => {
+                  gsap.to(`#project-image-${index}`, { left: '50%', ease: 'power2.inOut' })
+                  gsap.to(`#project-desc-${index}`, { opacity: 1, ease: 'power2.inOut' });
+                }}
+                className="projects opacity-0 overflow-hidden relative flex p-4 h-64 rounded-xl shadow-lg"
               >
-                <ProjectCard project={project} />
+                <div className="rounded-md flex flex-col w-full z-20">
+                  <a href={project.urls.website} target="_blank" rel="noopener noreferrer">
+                    <p className="text-2xl quicksand tracking-wider truncate text-shadow-md w-11/12">{project.name}</p>
+                  </a>
+                  <p className="text-sm">{project.type?.join(", ")}</p>
+
+                  <p id={`project-desc-${index}`} className="w-2/3 mt-10 text-shadow-sm">{project.description}</p>
+
+                  <div className="mt-auto">
+                    {project.tags.languages?.map((lang, index) => (
+                      <span
+                        key={index}
+                        style={{
+                          color: languages.find((L) => L.name === lang)?.color
+                        }}
+                        className="border-2 victor-mono text-xs px-1 rounded font-semibold mr-2 text-shadow-sm shadow"
+                      >
+                        {languages.find((L) => L.name === lang)?.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="absolute top-4 right-4 flex flex-col z-20 gap-2">
+                  {project.tags.techstacks.map((t, index) => {
+                    return (
+                      <span key={index} className="bg-white rounded-full p-1 w-8 h-8 flex justify-center items-center shadow">
+                        <IconFont key={index} name={t} tooltip={t} style={{ color: technologies.find((T) => T.icon === t)?.color }} className="text-shadow-md text-lg" />
+                      </span>
+                    )
+                  })}
+                </div>
+
+                <div id={`project-image-${index}`}
+                  style={{ mask: 'linear-gradient(to right, transparent, black 40%)', backgroundImage: `url(${project.urls.image})` }}
+                  className="absolute top-0 left-[50%] z-10 w-full h-full bg-cover"
+                />
+
+                <div style={grad(color1, color2)} className="opacity-75" />
               </div>
-            );
+            )
           })}
         </div>
 
-        <div className="flex justify-center relative z-10">
+        <div className="flex justify-center mt-10">
           <a href="https://github.com/Pyromagne?tab=repositories" target="_blank" rel="noopener noreferrer" className="text-lg font-m montserrat w-fit text-blue-bell-800">
             View all Projects
           </a>
         </div>
 
-        {/* Navigation buttons */}
-        <button
-          onClick={scrollLeft}
-          className="absolute -left-10 top-1/2 -translate-y-1/2 p-2 rounded-full shadow-lg z-10 border cursor-pointer"
-        >
-          <BiChevronLeft size={24} />
-        </button>
-        <button
-          onClick={scrollRight}
-          className="absolute -right-10 top-1/2 -translate-y-1/2 p-2 rounded-full shadow-lg z-10 border cursor-pointer"
-        >
-          <BiChevronRight size={24} />
-        </button>
       </section>
 
       {/* SECTION 4 */}
       <section id="section-4" className="min-h-svh py-10">
-        <h1 className="text-3xl montserrat text-center font-light">Skills</h1>
+        <h1 className="text-3xl montserrat text-center font-light">The skills I have gained throughout my experience</h1>
 
-        <div className="grid grid-cols-4 mt-10">
-          {skills.map((skill, index) => <p key={index} className="truncate p-2 m-1 text-blue-bell-900 hover:text-text duration-200 hover:cursor-pointer" title={skill.description}>{skill.name}</p>)}
+        <div className="grid grid-cols-4 mt-10 gap-4">
+          {skills.slice(0, 4).map((skill, index) => {
+            return (
+              <div key={index} id={`skill-a-${index}`} className="border border-blue-bell-600 rounded-xl p-4">
+                <p className="text-xl truncate" title={skill.name}>{skill.name}</p>
+                <p className="mt-4 text-blue-bell-800">{skill.description}</p>
+              </div>
+            )
+          })}
+        </div>
+
+        <div className="grid grid-cols-5 mt-4 gap-4">
+          {skills.slice(4).map((skill, index) => {
+            return (
+              <div key={index} id={`skill-b-${index}`} className=" border-blue-bell-600 rounded-xl p-2"
+                onMouseEnter={() => gsap.to(`#skill-b-${index}`, { scale: 1.15, duration: .2, ease: 'power1.inOut' })}
+                onMouseLeave={() => gsap.to(`#skill-b-${index}`, { scale: 1, duration: .2, ease: 'power1.out' })}
+              >
+                <p className="text truncate" title={skill.name}>{skill.name}</p>
+                <p className="mt-2 text-blue-bell-800 text-sm line-clamp-2">{skill.description}</p>
+              </div>
+            )
+          })}
         </div>
       </section>
     </main>
@@ -235,11 +288,15 @@ const Home = () => {
 
 export default Home;
 
-function hexToRGB(hex) {
-  const bigint = parseInt(hex.replace('#', ''), 16);
-  return [
-    ((bigint >> 16) & 255) / 255,
-    ((bigint >> 8) & 255) / 255,
-    (bigint & 255) / 255,
-  ];
+const grad = (color1, color2) => {
+  let style = {
+    position: 'absolute',
+    inset: 0,
+    /* mask: 'linear-gradient(320deg, transparent 0%, rgba(0, 0, 0, .9)90%, black 100%', */
+    background: `linear-gradient(320deg, ${color2} 0%, ${color1} 100%`,
+    /* backdropFilter: 'blur(32px)',
+    backgroundColor: `${color1}`, */
+  };
+
+  return style;
 }

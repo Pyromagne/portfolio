@@ -1,7 +1,7 @@
 {
-  "homepage": "https://Pyromagne.github.io/portfolio/",
+  "homepage": "https://ricardo-aron-iii.vercel.app/",
   "name": "pyromagne-portfolio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
@@ -9,9 +9,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "gsap": "^3.13.0",
-    "motion": "^12.23.22",
+    "motion": "^12.23.24",
     "node-vibrant": "^4.0.3",
-    "ogl": "^1.0.11",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",
@@ -24,9 +23,7 @@
     "test": "vitest",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "preview": "vite preview"
   },
   "eslintConfig": {
     "extends": [
@@ -48,7 +45,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.5.2",
-    "gh-pages": "^6.2.0",
     "vite": "^6.3.5",
     "vitest": "^3.2.4"
   }

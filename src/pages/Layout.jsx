@@ -18,7 +18,7 @@ const Layout = () => {
       let smoother = ScrollSmoother.create({
         wrapper: '#smooth-wrapper',
         content: '#smooth-content',
-        smooth: .8,
+        smooth: 1,
         effects: true,
         smoothTouch: 0.1,
       });
@@ -53,7 +53,7 @@ const Layout = () => {
 
 
   useLayoutEffect(() => {
-    const asd = document.querySelectorAll("nav button");
+    const nav = document.querySelectorAll("nav button");
 
     navlinks.forEach((link, index) => {
       ScrollTrigger.create({
@@ -66,8 +66,8 @@ const Layout = () => {
     });
 
     function setActiveLink(index) {
-      asd.forEach(link => link.classList.remove("active"));
-      asd[index].classList.add("active");
+      nav.forEach(link => link.classList.remove("active"));
+      nav[index].classList.add("active");
     }
 
     return () => {
@@ -96,7 +96,7 @@ const Layout = () => {
         {navlinks.map((link, index) => {
           return (
             <button key={index} onClick={() => gsap.to(window, { duration: .1, scrollTo: `#section-${index + 1}` })}
-              className="victor-mono p-2 inline-block text-center text-blue-bell-800 hover:text-black">
+              className="victor-mono cursor-pointer font-thin tracking-widest uppercase p-2 inline-block text-center text-blue-bell-800 hover:text-text">
               {link.name}
             </button>
           )
@@ -105,10 +105,10 @@ const Layout = () => {
 
       <div id="smooth-content">
         <Outlet />
-      </div>
 
-      <div className="w-full">
-        <p className='text-center relative mb-4'>&copy;  {year} Ricardo Aron III, All Rights Reserved.</p>
+        <div className="w-full">
+          <p className='text-center relative mb-4'>&copy;  {year} Ricardo Aron III, All Rights Reserved.</p>
+        </div>
       </div>
     </div>
   );

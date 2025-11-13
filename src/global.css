@@ -13,8 +13,6 @@
     --background: oklch(97.371% 0.00276 285.752);
     --text: oklch(16.094% 0.01146 80.973);
     --gradient-background: linear-gradient(145deg, #f6f6f8 0%, #959bcc 92%);
-    --wave-bottom: rgb(116, 118, 183, .35);
-    --recent-project-bg: rgb(164, 172, 213, .40);
 }
 
 @layer base {
@@ -22,8 +20,6 @@
     --background: oklch(16.094% 0.01146 80.973);
     --text: oklch(97.371% 0.00276 285.752);
     --gradient-background: linear-gradient(145deg, #292a3d 0%, #100d08 92%);
-    --wave-bottom: rgb(93, 95, 157, .38);
-    --recent-project-bg: rgb(164, 172, 213, .10);
   }
 }
 
@@ -63,15 +59,14 @@ html {
   scroll-behavior: smooth;
 }
 
-
 body {
   background: #F6F6F8;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  @apply select-none;
-  @apply min-h-screen;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .hover\:custom-shadow:hover {
@@ -82,33 +77,6 @@ body {
 
 .gradient {
   background: var(--gradient-background);
-}
-
-.gradient\/50 {
-  position: relative;
-  z-index: 0;
-}
-
-.gradient\/50::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--gradient-background);
-  opacity: 0.5;
-  /* 50% opacity */
-  z-index: -1;
-  pointer-events: none;
-}
-
-.pattern {
-  background-image: radial-gradient(#444cf7 1px, transparent 1px), radial-gradient(#444cf7 1px, transparent 1px);
-  background-size: 30px 30px;
-  background-position: 0 0, 15px 15px;
-}
-
-.grain {
-  background-image: url("./assets/images/grain.png");
-  background-repeat: repeat;
 }
 
 .text-vertical-lr {
@@ -126,20 +94,6 @@ body {
   writing-mode: vertical-rl;
   white-space: nowrap;
   display: inline-block;
-}
-
-.wave-bottom {
-  background-color: var(--wave-bottom);
-}
-
-.recent-project-bg {
-  background-color: var(--recent-project-bg);
-}
-
-.darkveil-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
 }
 
 nav button.active {

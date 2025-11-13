@@ -93,6 +93,11 @@ export const technologies = [
         name: 'SFML',
     },
     {
+        icon: 'spotify api',
+        color: '#1ED760',
+        name: 'Spotify API',
+    },
+    {
         icon: 'tailwindcss',
         color: '#06B6D4',
         name: 'Tailwind CSS',
@@ -136,5 +141,10 @@ export const technologies = [
         icon: 'gsap',
         color: '#0AE448',
         name: 'GSAP',
+    },
+    {
+        icon: 'vite',
+        color: '#646CFF',
+        name: 'Vite',
     },
 ]

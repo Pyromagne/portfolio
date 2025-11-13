@@ -1,7 +1,7 @@
 import whatsnewfeed from "../assets/images/projects/whatsnewfeed-mockup.jpg";
 import reveriejournal from "../assets/images/projects/reverie-journal.png";
 import projectminesweeper from "../assets/images/projects/project-minesweeper.png"
-import nf_btms_lgstc_i from "../assets/images/projects/nexfleet-dynamics-btms-lgstc-I-2.png";
+import nf_btms_lgstc_i from "../assets/images/projects/nexfleet-dynamics-btms-lgstc-I-4.png";
 import ge_bot from "../assets/images/projects/ge-bot-mockup.jpg";
 import psl from "../assets/images/projects/pen-spinning-library.png";
 
