@@ -128,11 +128,6 @@ export const technologies = [
         name: 'PostgreSQL',
     },
     {
-        icon: 'cheerio',
-        color: '#E88C1F',
-        name: 'Cheerio',
-    },
-    {
         icon: 'puppeteer',
         color: '#40B5A4',
         name: 'Puppeteer',
@@ -147,4 +142,14 @@ export const technologies = [
         color: '#646CFF',
         name: 'Vite',
     },
+    {
+        icon: 'mongoose',
+        color: '#880000',
+        name: 'Mongoose',
+    },
+    {
+        icon: 'django',
+        color: '#092E20',
+        name: 'Django',
+    },  
 ]
